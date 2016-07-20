@@ -51,7 +51,7 @@ void do_more(FILE* fp)
 int see_more(FILE *cmd)
 {
     int c;
-    printf("%\033[7m more? %\033[m");
+    printf("\033[7m more? \033[m");
     while((c=getc(cmd))!=EOF)
     {
         if(c=='q') return 0;
