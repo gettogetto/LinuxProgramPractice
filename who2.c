@@ -28,7 +28,6 @@ void show_info(struct utmp *utbufp){
     printf(" ");
     printf("% -8.8s",utbufp->ut_line);
     printf(" ");
-    //printf("% 10ld",utbufp->ut_tv);
     printf("%12.12s",ctime(&utbufp->ut_tv));
     printf(" ");
 #ifdef SHOWHOST
