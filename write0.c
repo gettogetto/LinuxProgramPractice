@@ -2,6 +2,7 @@
 #include<fcntl.h>
 #include<unistd.h>
 #include<string.h>
+//communication between two tty
 int main(int argc,char* argv[])
 {
     int fd;
