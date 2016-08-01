@@ -32,6 +32,7 @@ char* next_cmd(char* prompt,FILE* fp){
 char** splitline(char *line){
     char *newstr(char*,int);
     char** args;
+
     int spots=0;
     int bufspace=0;
     int argnum=0;
