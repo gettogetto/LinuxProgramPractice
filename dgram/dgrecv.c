@@ -2,6 +2,7 @@
 
 #define oops(m,x){perror(m);exit(x);}
 void say_who_called(struct sockaddr_in* saddrp);
+void reply_to_sender(int sock,char* msg,struct sockaddr_in* addrp,socklen_t len);
 
 int main(int argc,char* argv[])
 {
@@ -23,6 +24,7 @@ int main(int argc,char* argv[])
         buf[msglen]='\0';
         printf("dgrecv:got a message: %s\n",buf);
         say_who_called(&saddr);
+        reply_to_sender(sock,buf,&saddr,saddrlen);
     }
     return 0;
 }
@@ -34,4 +36,11 @@ void say_who_called(struct sockaddr_in *saddrp)
     get_internet_address(host,BUFSIZ,&port,saddrp);
 
     printf("from:%s:%d\n",host,port);
+}
+
+void reply_to_sender(int sock,char* msg,struct sockaddr_in* addrp,socklen_t len)
+{
+    char reply[BUFSIZ];
+    sprintf(reply,"Thank for you %d char message\n",strlen(msg));
+    sendto(sock,reply,strlen(reply),0,addrp,len);
 }

@@ -1,3 +1,5 @@
+#ifndef DGRAM_H
+#define DGRAM_H
 #include<stdio.h>
 #include<unistd.h>
 #include<sys/types.h>
@@ -15,3 +17,4 @@ int make_internet_address(char* hostname,int portnum,struct sockaddr_in* addrp);
 int get_internet_address(char* host,int len,int *portp,struct sockaddr_in* addrp);
 
 int make_dgram_client_socket();
+#endif

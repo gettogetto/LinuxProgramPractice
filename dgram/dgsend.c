@@ -1,5 +1,11 @@
 #include"dgram.h"
 #define oops(m,x){perror(m);exit(x);}
+void display_received_from_server(int sock,char* buf,int bufsize,struct sockaddr_in* saddrp){
+    recvfrom(sock,buf,bufsize,0,saddrp,sizeof(*saddrp));
+    printf("received %s from %s:%d\n",buf,inet_ntoa(saddrp->sin_addr),ntohs(saddrp->sin_port));
+
+}
+
 int main(int argc, char *argv[])
 {
     int sock;
@@ -19,5 +25,9 @@ int main(int argc, char *argv[])
     {
         oops("send",1);
     }
+    char recv[BUFSIZ];
+
+    display_received_from_server(sock,recv,BUFSIZ,&saddr);
+
     return 0;
 }
